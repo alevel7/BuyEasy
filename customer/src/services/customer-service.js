@@ -139,7 +139,6 @@ class CustomerService {
     }
 
     async SubscribeEvents(payload){
- 
         const { event, data } =  payload;
 
         const { userId, product, order, qty } = data;
@@ -157,6 +156,9 @@ class CustomerService {
                 break;
             case 'CREATE_ORDER':
                 this.ManageOrder(userId,order);
+                break;
+            case 'TEST':
+                console.log("WORKING SUBSCRIBERS")
                 break;
             default:
                 break;

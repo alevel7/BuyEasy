@@ -1,12 +1,13 @@
 const dotEnv = require("dotenv");
-// dotEnv.config();
-if (process.env.NODE_ENV !== "prod") {
-  console.log("using dev env")
-  const configFile = `./.env.${process.env.NODE_ENV}`;
-  dotEnv.config({ path: configFile });
+const fs = require('fs');
+
+if (process.env.NODE_ENV === "dev") {
+  dotEnv.config({ path: "./.env.dev" });
+  const configFile = `.env.${process.env.NODE_ENV}`;
+  console.log("USING DEV ENV", process.env.NODE_ENV)
 } else {
-  console.log("using prod env")
   dotEnv.config();
+  console.log("USING PRODUCTION ENV", process.env.NODE_ENV)
 }
 
 module.exports = {
